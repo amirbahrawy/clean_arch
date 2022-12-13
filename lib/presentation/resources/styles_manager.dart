@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'font_manager.dart';
+import 'fonts_manager.dart';
 //regular style
  TextStyle getRegularStyle({
   double fontSize = FontSizeManager.s12, required Color color,}){

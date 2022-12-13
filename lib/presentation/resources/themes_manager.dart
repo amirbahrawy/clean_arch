@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-import 'color_manager.dart';
+import 'colors_manager.dart';
 import 'styles_manager.dart';
-import 'font_manager.dart';
+import 'fonts_manager.dart';
 import 'values_manager.dart';
 
 ThemeData getApplicationTheme() {
@@ -21,6 +22,9 @@ ThemeData getApplicationTheme() {
       ),
       //app bar theme
       appBarTheme: AppBarTheme(
+          systemOverlayStyle: const SystemUiOverlayStyle(
+              statusBarColor: ColorManager.darkGrey,
+              statusBarIconBrightness: Brightness.light),
           color: ColorManager.primary,
           shadowColor: ColorManager.lightPrimary,
           elevation: AppSize.s4,
@@ -46,13 +50,17 @@ ThemeData getApplicationTheme() {
           displayLarge: getLightStyle(
               color: ColorManager.white, fontSize: FontSizeManager.s22),
           headlineLarge: getSemiBoldStyle(
-              color: ColorManager.darkGrey, fontSize: FontSizeManager.s20),
+              color: ColorManager.darkGrey, fontSize: FontSizeManager.s18),
+          headlineSmall: getRegularStyle(
+              color: ColorManager.darkGrey, fontSize: FontSizeManager.s14),
           titleLarge: getSemiBoldStyle(
               color: ColorManager.grey, fontSize: FontSizeManager.s16),
           titleMedium: getMediumStyle(
-              color: ColorManager.lightGrey, fontSize: FontSizeManager.s14),
-          bodyMedium: getRegularStyle(color: ColorManager.grey1,fontSize: FontSizeManager.s12),
-          bodySmall: getRegularStyle(color: ColorManager.grey,fontSize: FontSizeManager.s10)),
+              color: ColorManager.primary, fontSize: FontSizeManager.s16),
+          bodyMedium: getRegularStyle(
+              color: ColorManager.grey1, fontSize: FontSizeManager.s12),
+          bodySmall: getRegularStyle(
+              color: ColorManager.grey, fontSize: FontSizeManager.s10)),
       //input decoration theme(text form field)
       inputDecorationTheme: InputDecorationTheme(
           contentPadding: const EdgeInsets.all(AppPadding.p8),
@@ -67,15 +75,14 @@ ThemeData getApplicationTheme() {
               borderRadius: BorderRadius.all(Radius.circular(AppSize.s8))),
           focusedBorder: const OutlineInputBorder(
               borderSide:
-              BorderSide(color: ColorManager.grey, width: AppSize.s1_5),
+                  BorderSide(color: ColorManager.grey, width: AppSize.s1_5),
               borderRadius: BorderRadius.all(Radius.circular(AppSize.s8))),
           errorBorder: const OutlineInputBorder(
               borderSide:
-              BorderSide(color: ColorManager.error, width: AppSize.s1_5),
+                  BorderSide(color: ColorManager.error, width: AppSize.s1_5),
               borderRadius: BorderRadius.all(Radius.circular(AppSize.s8))),
-          focusedErrorBorder:const OutlineInputBorder(
+          focusedErrorBorder: const OutlineInputBorder(
               borderSide:
-              BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
-              borderRadius: BorderRadius.all(Radius.circular(AppSize.s8)))
-      ));
+                  BorderSide(color: ColorManager.primary, width: AppSize.s1_5),
+              borderRadius: BorderRadius.all(Radius.circular(AppSize.s8)))));
 }
