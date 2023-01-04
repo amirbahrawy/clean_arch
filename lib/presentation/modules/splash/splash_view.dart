@@ -4,6 +4,7 @@ import 'package:clean_architecture/presentation/resources/routes_manager.dart';
 import 'package:flutter/material.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/colors_manager.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -13,9 +14,11 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   Timer? _timer;
-  _startDelay(){
-    _timer=Timer(const Duration(seconds: AppConstants.splashDelay), _goNext);
+
+  _startDelay() {
+    _timer = Timer(const Duration(seconds: AppConstants.splashDelay), _goNext);
   }
+
   void _goNext() {
     Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
   }
@@ -33,6 +36,10 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(child: Image(image: AssetImage(ImageAssets.splashLogo))),
     );
   }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
 }
-
-
